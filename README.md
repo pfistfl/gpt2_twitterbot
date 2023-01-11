@@ -36,4 +36,5 @@ Once this is set up, run the following steps to set up the API:
     * Automate the submission of tweets, e.g. via a `cron` job or a AWS Lambda / Azure function.
 
 ### Dockerfile
-In order to deploy the Bo
+In order to deploy the bot via docker, you can use the included Dockerfile.
+Simply run `docker build -t <TAG> .` and then `docker run <TAG>` to run the bot.

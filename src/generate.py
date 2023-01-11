@@ -25,6 +25,9 @@ def sample_prompt(args):
     l = f.readlines()
   return random.choice(l).strip().capitalize()
 
+def filter(gen):
+  return [g for g in gen if len(g) > 16]
+
 def tweetify(generated_sequence):
   # Cut to 144
   x = generated_sequence[:min(len(generated_sequence), 144)]
@@ -32,7 +35,10 @@ def tweetify(generated_sequence):
 
 @dataclass
 class Args:
-  model_name_or_path = 'output/aiwanger'
+  """
+  Settings container for the generation.
+  """
+  model_name_or_path = 'model_path'
   device = 'cpu'
   seed = 123
   fp16=False
@@ -50,17 +56,22 @@ class Args:
   length=144
   stop_token="<|endoftext|>"
 
-def filter(gen):
-  return [g for g in gen if len(g) > 16]
-
 def generate(prompt=False):
+  """
+  Generate tweets from a trained model
+
+  Args:
+      prompt (str|bool): Initial prompt word(s) for generating tweets. Defaults to False.
+
+  Returns:
+      list: list of <str> containing generated tweets
+  """
 
   args = Args()
   args.prompt=prompt
   tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path)
   model = GPT2LMHeadModel.from_pretrained(args.model_name_or_path)
-  model.to(args.device)
-    
+  model.to(args.device)  
   if args.fp16:
     model.half()
 
