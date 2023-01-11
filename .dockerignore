@@ -1,0 +1,6 @@
+data/*
+gpt2-aiwang/*
+output/german_tweets/*
+output/aiwanger/checkpoint*/
+output/aiwanger/runs/*
+output/aiwanger/model.zip

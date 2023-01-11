@@ -1,0 +1,14 @@
+.twitter_secrets.yaml
+output/*/checkpoint*
+output/*/runs
+gpt2-aiwang
+output/german_tweets/
+output
+data/german_tweets_2020
+data/train_german*
+data/valid_german*
+data/yt.txt
+keys.yaml
+*.pyc
+*/src/*.pyc
+.env
