@@ -28,7 +28,7 @@ def sample_prompt(args):
 def tweetify(generated_sequence):
   # Cut to 144
   x = generated_sequence[:min(len(generated_sequence), 144)]
-  return x#re.sub(r'{\.|\!|\?}[^{\.|\!|\?}]*$', '', x)
+  return x
 
 @dataclass
 class Args:
@@ -40,7 +40,7 @@ class Args:
   # Arguments for generation
   prompt=False
   prefix=""
-  length=64
+  length=36
   temperature=1.0
   k=10
   p=.9
